@@ -200,9 +200,9 @@ declare module TotalJS {
 
         eval(url: string): Framework;
 
-        file(name: string): Framework;
+        file(name: string, fnExec: (req, res, isValidation: boolean) => void): Framework;
 
-        file(name: string, fnValid: (req?: Object) => void, fnExec, middleware?: (req?, res?, isValidation?: boolean) => void): Framework;
+        file(name: string, fnValid: (req?: Object) => void, fnExec: (req, res, isValidation: boolean) => void): Framework, middleware?: string[];
 
         hash(type, value, salt?): Framework;
 
@@ -318,15 +318,15 @@ declare module TotalJS {
 
         response501(req, res): Framework;
 
-        responseContent(req: Object, res: Object, code: number, contentBody: string, contentType: string, compress: boolean, heades?: Object): Framework;
+        responseContent(req: Object, res: Object, code: number, contentBody: string, contentType: string, compress?: boolean, heades?: Object): Framework;
 
         responseCustom(req, res): Framework;
 
         responseFile(req: Object, res: Object, filename: string, downloadName?: string, headers?: Object): Framework;
 
-        responseImage(req: Object, res: Object, filename: NodeJS.ReadableStream, fnProcess: (image: TotalJS.Image) => void, headers: Object, useImageMagick?: boolean): Framework;
+        responseImage(req: Object, res: Object, filename: string, fnProcess: (image: TotalJS.Image) => void, headers?: Object, useImageMagick?: boolean): Framework;
 
-        responseImage(req: Object, res: Object, filename: string, fnProcess: (image: TotalJS.Image) => void, headers: Object, useImageMagick?: boolean): Framework;
+        responseImage(req: Object, res: Object, filename: NodeJS.ReadableStream, fnProcess: (image: TotalJS.Image) => void, headers?: Object, useImageMagick?: boolean): Framework;
 
         responseImageWithoutCache(req: Object, res: Object, filename: NodeJS.ReadableStream, fnProcess: (image: TotalJS.Image) => void, headers: Object, useImageMagick?: boolean): Framework;
 
@@ -347,6 +347,13 @@ declare module TotalJS {
          * @return Totaljs Framework object
          */
         route(url: string, fn: (...params: string[]) => void, options?: Object): Framework;
+        route(url: string, fn: (param1: string, ...params: string[]) => void, options?: Object): Framework;
+        route(url: string, fn: (param1: string, param2: string, ...params: string[]) => void, options?: Object): Framework;
+        route(url: string, fn: (param1: string, param2: string, param3: string, ...params: string[]) => void, options?: Object): Framework;
+        route(url: string, fn: (param1: string, param2: string, param3: string, param4: string, ...params: string[]) => void, options?: Object): Framework;
+        route(url: string, fn: (param1: string, param2: string, param3: string, param4: string, param5: string, ...params: string[]) => void, options?: Object): Framework;
+        route(url: string, fn: (param1: string, param2: string, param3: string, param4: string, param5: string, param6: string, ...params: string[]) => void, options?: Object): Framework;
+        route(url: string, fn: (param1: string, param2: string, param3: string, param4: string, param5: string, param6: string, param7: string, ...params: string[]) => void, options?: Object): Framework;
 
         routeCSS(name: string): string;
 
@@ -2552,7 +2559,8 @@ declare module TotalJS {
 
         quality(percentage: number): Image;
 
-        resize(width: string, height: string, options: Object): Image;
+        resize(width: string, height: string, options?: Object): Image;
+        resize(both: string);
 
         resizeCenter(width: string, height: string): Image;
 
