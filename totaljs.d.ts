@@ -1031,16 +1031,16 @@ declare module TotalJS {
          * Controller repository object for storing current request values.
          */
         repository: Object;
-    
+
         /**
          * Current HTTP request.
          */
-        req: Object;
+        req: any;
         
         /**
          * Current HTTP response.
          */
-        res: Object;
+        res: any;
         
         /**
          * Current HTTP session.
