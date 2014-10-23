@@ -1307,7 +1307,7 @@ declare module TotalJS {
          */
         host(path?: string): string;
 
-        image(filename: string, fnProcess: (image?: TotalJS.Image) => void): Controller;
+        image(filename: string, fnProcess: (image: TotalJS.Image) => void): Controller;
 
         image(filename: string, fnProcess: (image: TotalJS.Image) => void, headers: Object, useImageMagick: boolean): Controller;
 
