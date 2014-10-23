@@ -1150,7 +1150,7 @@ declare module TotalJS {
          */
         component(name: string, ...param: Object[]): Controller;
 
-        content(body: string, type: string, headers?: Object): Controller;
+        content(body: string, type?: string, headers?: Object): Controller;
 
         cors(allow: string[], method?: string[], header?: string[], credentials?: boolean): boolean;
         
