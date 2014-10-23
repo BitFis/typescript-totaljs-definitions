@@ -202,7 +202,12 @@ declare module TotalJS {
 
         file(name: string, fnExec: (req, res, isValidation: boolean) => void): Framework;
 
-        file(name: string, fnValid: (req?: Object) => void, fnExec: (req, res, isValidation: boolean) => void): Framework, middleware?: string[];
+        file(
+            name: string,
+            fnValid: (req?: Object) => void,
+            fnExec: (req?, res?, isValidation?: boolean) => void,
+            middleware?: string[]
+            ): Framework;
 
         hash(type, value, salt?): Framework;
 
@@ -346,14 +351,14 @@ declare module TotalJS {
          * @param fn Function to execute.
          * @return Totaljs Framework object
          */
-        route(url: string, fn: (...params: string[]) => void, options?: Object): Framework;
-        route(url: string, fn: (param1: string, ...params: string[]) => void, options?: Object): Framework;
-        route(url: string, fn: (param1: string, param2: string, ...params: string[]) => void, options?: Object): Framework;
-        route(url: string, fn: (param1: string, param2: string, param3: string, ...params: string[]) => void, options?: Object): Framework;
-        route(url: string, fn: (param1: string, param2: string, param3: string, param4: string, ...params: string[]) => void, options?: Object): Framework;
-        route(url: string, fn: (param1: string, param2: string, param3: string, param4: string, param5: string, ...params: string[]) => void, options?: Object): Framework;
-        route(url: string, fn: (param1: string, param2: string, param3: string, param4: string, param5: string, param6: string, ...params: string[]) => void, options?: Object): Framework;
-        route(url: string, fn: (param1: string, param2: string, param3: string, param4: string, param5: string, param6: string, param7: string, ...params: string[]) => void, options?: Object): Framework;
+        route(url: string, fn: (...params: any[]) => void, options?: Object): Framework;
+        route(url: string, fn: (param1: any, ...params: any[]) => void, options?: Object): Framework;
+        route(url: string, fn: (param1: any, param2: any, ...params: any[]) => void, options?: Object): Framework;
+        route(url: string, fn: (param1: any, param2: any, param3: any, ...params: any[]) => void, options?: Object): Framework;
+        route(url: string, fn: (param1: any, param2: any, param3: any, param4: any, ...params: any[]) => void, options?: Object): Framework;
+        route(url: string, fn: (param1: any, param2: any, param3: any, param4: any, param5: any, ...params: any[]) => void, options?: Object): Framework;
+        route(url: string, fn: (param1: any, param2: any, param3: any, param4: any, param5: any, param6: any, ...params: any[]) => void, options?: Object): Framework;
+        route(url: string, fn: (param1: any, param2: any, param3: any, param4: any, param5: any, param6: any, param7: any, ...params: any[]) => void, options?: Object): Framework;
 
         routeCSS(name: string): string;
 
