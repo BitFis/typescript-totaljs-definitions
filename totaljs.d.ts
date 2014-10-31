@@ -1967,6 +1967,9 @@ declare module TotalJS {
 		 */
 		connections: WebSocketClient[];
 		
+		/**
+		 * Identification value
+		 */
 		id: string
 		
 		/**
