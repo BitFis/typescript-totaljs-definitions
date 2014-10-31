@@ -410,7 +410,8 @@ declare module TotalJS {
          */
         usage(detailed?: boolean): string;
 
-        websocket(url, fn): Framework;
+        websocket(url: string, fn: (controller: Object, framework: Object) => void, settings?: Array<any>): Framework;
+        websocket(url: string, fn: (controller: Object) => void, settings?: Array<any>): Framework;
 
         /**
          * Create worker.
@@ -1957,6 +1958,114 @@ declare module TotalJS {
         on(event: string, ...params: any[]): Framework;
     }
 
+	interface WebSocket {
+		
+        /**< Attributes */
+		
+		/**
+		 * List of all connections
+		 */
+		connections: WebSocketClient[];
+		
+		id: string
+		
+		/**
+		 * Websocket identification name
+		 */
+		name: string
+		
+		/**
+		 * Number clients connected
+		 */
+		online: number;
+		
+		/**
+		 * 
+		 */
+		repository: Object;
+		
+		isController: boolean;
+		
+		/**
+		 * Url of the websocket connection
+		 */
+		url: string;
+		
+        /**< Methods */
+		
+		/**
+    	 * Close connection
+         * <pre>
+         * {@code
+		 *   if (names === null || names === undefined)
+		 *	   close/disconnect all users
+         * }
+         * </pre>
+		 *
+    	 * @names names? client.id, optional - default null
+		 */
+		close(names?: string[]);
+		
+		/**
+		 * Destroy websocket
+		 */
+		destroy();
+		
+		/**
+		 * Find a client
+    	 * @param name Name of the client
+    	 * return WebSocketClient
+		 */
+		find(name: string): WebSocketClient;
+		
+		/**
+    	 * Send message to all
+         * <pre>
+         * {@code
+		 *  if (names === null || names === undefined)
+		 * 		message send to all users
+         * }
+         * </pre>
+    	 * @param value Message sent to client.
+    	 * @param names? Ids of the client to send to, default null
+    	 * @param blacklist? Ids of the clients to remove from list to send message to, default null
+		 */
+		send(value: string, names: string[], blacklist: string[]);
+		/**
+    	 * Send message to all
+         * <pre>
+         * {@code
+		 *  if (names === null || names === undefined)
+		 * 		message send to all users
+         * }
+         * </pre>
+    	 * @param value Message sent to client.
+    	 * @param names? Ids of the client to send to, default null
+    	 * @param blacklist? Ids of the clients to remove from list to send message to, default null
+		 */
+		send(value: Object, names: string[], blacklist: string[]);
+				 
+        /**< Events */
+
+        /**
+         * Create event function
+         * <pre>
+         * {@code
+         * mail.on('error', err, client)
+         * mail.on('message', client, message)
+         * mail.on('open', client)
+         * mail.on('close', client)
+         * }
+         * </pre>
+         * @param event Event name
+         * @param fn Function run
+         * @return Totaljs Framework object
+         *
+         * @see http://docs.totaljs.com/FrameworkMail/#mail.on('error')
+         */
+        on(event: string, ...params: any[]): Framework;
+	}
+	
     /**
      * 
      */
