@@ -1987,6 +1987,9 @@ declare module TotalJS {
 		 */
 		repository: Object;
 		
+        /**
+         * return if it is a controller
+         */
 		isController: boolean;
 		
 		/**
@@ -2033,7 +2036,7 @@ declare module TotalJS {
     	 * @param names? Ids of the client to send to, default null
     	 * @param blacklist? Ids of the clients to remove from list to send message to, default null
 		 */
-		send(value: string, names: string[], blacklist: string[]);
+		send(value: string, names?: string[], blacklist?: string[]);
 		/**
     	 * Send message to all
          * <pre>
@@ -2046,7 +2049,7 @@ declare module TotalJS {
     	 * @param names? Ids of the client to send to, default null
     	 * @param blacklist? Ids of the clients to remove from list to send message to, default null
 		 */
-		send(value: Object, names: string[], blacklist: string[]);
+		send(value: Object, names?: string[], blacklist?: string[]);
 				 
         /**< Events */
 
