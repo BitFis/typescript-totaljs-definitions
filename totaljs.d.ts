@@ -275,7 +275,7 @@ declare module TotalJS {
         model(name: string);
         model<T>(name: string): T;
 
-        module(name): Object;
+        module(name): any;
         module<T>(name): T;
 
         noCache(req, res?): Framework;
@@ -412,6 +412,7 @@ declare module TotalJS {
 
         websocket(url: string, fn: (controller: Object, framework: Object) => void, settings?: Array<any>): Framework;
         websocket(url: string, fn: (controller: Object) => void, settings?: Array<any>): Framework;
+        websocket(url: string, fn: (controller: Object) => void, decode: Array<any>, blacklist: Array<any>, whitelist: Array<any>): Framework;
 
         /**
          * Create worker.
@@ -1995,7 +1996,7 @@ declare module TotalJS {
 		/**
 		 * Url of the websocket connection
 		 */
-		url: string;
+		uri: string;
 		
         /**< Methods */
 		
